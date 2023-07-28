@@ -38,10 +38,14 @@ app.get('/getProduct/:id', async(req, res) => {
         console.log(err)
     }
 })
+app.delete('/deleteProduct/:id', async(req, res) => {
+    try {
+        const { id } = req.params;
 
+        const product = await productsModel.deleteOne({ _id: id })
 
-// connect to DB 
-mongoose.connect('mongodb://anaomart:omarashraf@ac-3cjch4l-shard-00-00.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-01.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-02.49mdvgj.mongodb.net:27017/?ssl=true&replicaSet=atlas-j20wdy-shard-0&authSource=admin&retryWrites=true&w=majority', () => console.log('Connect to database '))
-
-
-app.listen(PORT, () => console.log('Listening on : ' + PORT))
+        res.json(product)
+    } catch (err) {
+        console.log(err)
+    }
+})
