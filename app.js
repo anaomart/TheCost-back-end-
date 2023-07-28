@@ -48,4 +48,10 @@ app.delete('/deleteProduct/:id', async(req, res) => {
     } catch (err) {
         console.log(err)
     }
+    // connect to DB 
+
+
 })
+mongoose.connect('mongodb://anaomart:omarashraf@ac-3cjch4l-shard-00-00.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-01.49mdvgj.mongodb.net:27017,ac-3cjch4l-shard-00-02.49mdvgj.mongodb.net:27017/?ssl=true&replicaSet=atlas-j20wdy-shard-0&authSource=admin&retryWrites=true&w=majority').then(() => console.log("DB Connected"))
+
+app.listen(PORT, () => console.log('Listening on : ' + PORT))
