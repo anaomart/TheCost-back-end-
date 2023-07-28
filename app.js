@@ -41,10 +41,10 @@ app.get('/getProduct/:id', async(req, res) => {
 app.delete('/deleteProduct/:id', async(req, res) => {
     try {
         const { id } = req.params;
-
+        console.log(id)
         const product = await productsModel.deleteOne({ _id: id })
-
-        res.json(product)
+        console.log(product)
+        res.json({ product })
     } catch (err) {
         console.log(err)
     }
